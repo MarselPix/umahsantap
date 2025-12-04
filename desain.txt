@@ -1,0 +1,180 @@
+
+
+## 🎨 **DESIGN OVERVIEW: UMAH SANTAP APP**
+
+### **1. COLOR SCHEME (Palette Kekinian)**
+- **Primary:** Orange (#FF7F00) / Dark Orange (#D35400)  
+- **Secondary:** Cream (#FFF9E6), Dark Grey (#2C3E50)  
+- **Accent:** Green (#27AE60) untuk CTAs, Red (#E74C3C) untuk promo  
+
+### **2. FONTS**
+- **Headers:** Poppins (Bold)  
+- **Body:** Open Sans (Regular)  
+- **Fallback:** Sans-Serif  
+
+### **3. ICONS**
+- Font Awesome untuk icons (cart, user, payment methods, etc)  
+
+### **4. IMAGES**
+- Semua gambar menu disimpan di `assets/img/` dengan nama sesuai menu  
+
+---
+
+## 📱 **HALAMAN USER (FRONTEND)**  
+
+### **A. Halaman Utama (index.php) - LANDING PAGE LEVEL GOFOD**  
+- **Navbar:**  
+  - Logo "Umah Santap" (kiri)  
+  - Menu: Home, Menu, Promo, Lokasi  
+  - Tombol: Chat WA (ikon WhatsApp), Login Admin, Cart (dengan badge jumlah item)  
+- **Hero Section:**  
+  - Full-width slider promo (ayam geprek diskon, free Ongkir, dll)  
+  - Overlay gelap dengan teks "Pesan Makanan Favoritmu Sekarang!"  
+  - Tombol besar "PESAN SEKARANG"  
+- **Features Highlight:**  
+  - Ikon metode pembayaran (COD, BRI, DANA, ShopeePay)  
+  - Jaminan higienis, gratis ongkir (min. Rp 50.000)  
+- **Menu Populer:**  
+  - Card dengan gambar, nama, harga, rating (5 bintang)  
+  - Tombol "Tambah" untuk langsung add to cart  
+- **Testimonial Pelanggan:**  
+  - Foto, nama, komentar, rating  
+- **Footer:**  
+  - Alamat, jam operasional, sosmed (IG, FB, WA)  
+  - Link kebijakan privasi, syarat & ketentuan  
+
+---
+
+### **B. Halaman Menu (menu.php) - KATEGORI MAKANAN & MINUMAN**  
+- **Tab Kategori:** Makanan, Minuman, Promo  
+- **Search Bar:** Cari menu...  
+- **Filter:** Urutkan (harga termurah, terpopuler)  
+- **Card Menu:**  
+  - Gambar menu  
+  - Nama menu  
+  - Harga (coret harga lama jika ada promo)  
+  - Rating (bintang)  
+  - Tombol "+" untuk tambah ke keranjang  
+
+---
+
+### **C. Halaman Keranjang (cart.php)**  
+- List menu yang dipilih dengan gambar, nama, harga, jumlah, subtotal  
+- Tombol +/- untuk ubah jumlah  
+- Input kode promo (jika ada)  
+- Ringkasan biaya: Subtotal, Ongkir, Diskon, Total  
+- Pilih metode pembayaran:  
+  - COD (logo cash)  
+  - Transfer BRI (logo BRI)  
+  - DANA (logo DANA)  
+  - ShopeePay (logo ShopeePay)  
+- Tombol "Lanjut ke Checkout"  
+
+---
+
+### **D. Halaman Checkout (checkout.php)**  
+- Form data diri:  
+  - Nama Pemesan  
+  - No. HP  
+  - Alamat Lengkap  
+  - Catatan (opsional)  
+- Ringkasan pesanan  
+- Pilih metode pembayaran (logo)  
+- Tombol "Konfirmasi Pesanan"  
+
+---
+
+### **E. Halaman Status Pesanan (order_tracking.php)**  
+- Progress bar:  
+  - Dipesan  
+  - Diproses  
+  - Diantar  
+  - Selesai  
+- Estimasi waktu pengiriman  
+- Tombol "Hubungi Kurir" (redirect WA)  
+
+---
+
+## 👨‍💼 **HALAMAN ADMIN (BACKEND)**  
+
+### **A. Login Admin (admin/login.php)**  
+- Form login dengan background gambar ayam geprek  
+- Input: username, password (md5 encrypted)  
+- Tombol "Masuk"  
+
+### **B. Dashboard Admin (admin/dashboard.php)**  
+- **Statistik:**  
+  - Pendapatan hari ini  
+  - Total pesanan  
+  - Menu terlaris  
+- **Grafik penjualan mingguan**  
+- **Daftar pesanan terbaru** (bisa filter by status)  
+
+### **C. Kelola Menu (admin/kelola_menu.php)**  
+- Tabel daftar menu (gambar, nama, kategori, harga, stok)  
+- Tombol "Tambah Menu", "Edit", "Hapus"  
+- Form tambah/edit menu:  
+  - Nama menu  
+  - Kategori (dropdown: makanan/minuman)  
+  - Harga  
+  - Upload gambar  
+  - Tombol simpan  
+
+### **D. Kelola Pesanan (admin/kelola_pesanan.php)**  
+- Tabel pesanan (ID, customer, total, status, metode bayar)  
+- Fitur ubah status (dipesan, diproses, diantar, selesai)  
+- Tombol "Detail" untuk lihat info lengkap  
+
+### **E. Kelola Promo (admin/kelola_promo.php)**  
+- Form tambah promo:  
+  - Kode promo  
+  - Jenis (diskon persen atau nominal)  
+  - Min. pembelian  
+  - Masa berlaku  
+- Tabel daftar promo aktif  
+
+---
+
+## 🛠 **FITUR TAMBAHAN KEREN**  
+- Real-time notification (toast ketika tambah ke keranjang)  
+- Auto calculate total di keranjang  
+- Order tracking dengan progress bar  
+- Rating system untuk menu  
+- Print invoice untuk admin  
+- Responsive design (mobile-first)  
+
+---
+
+## 📦 **DATABASE DESIGN (UPDATE)**  
+
+### **Tabel `menu`**  
+- id_menu (INT, AUTO_INCREMENT, PRIMARY KEY)  
+- nama_menu (VARCHAR)  
+- kategori (ENUM('makanan','minuman'))  
+- harga (INT)  
+- gambar (VARCHAR)  
+- stok (INT)  
+- rating (FLOAT)  
+
+### **Tabel `pesanan`**  
+- id_pesanan (INT, AUTO_INCREMENT, PRIMARY KEY)  
+- nama_pemesan (VARCHAR)  
+- no_hp (VARCHAR)  
+- alamat (TEXT)  
+- metode_bayar (ENUM('COD','BRI','DANA','SHOPEEPAY'))  
+- status (ENUM('dipesan','diproses','diantar','selesai'))  
+- total_harga (INT)  
+- tanggal_pesan (DATETIME)  
+
+### **Tabel `detail_pesanan`**  
+- id_detail (INT, AUTO_INCREMENT, PRIMARY KEY)  
+- id_pesanan (INT, FOREIGN KEY)  
+- id_menu (INT, FOREIGN KEY)  
+- jumlah (INT)  
+- subtotal (INT)  
+
+### **Tabel `admin`**  
+- id_admin (INT, AUTO_INCREMENT, PRIMARY KEY)  
+- username (VARCHAR)  
+- password (VARCHAR) (MD5)  
+
