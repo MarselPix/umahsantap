@@ -1,9 +1,9 @@
 <?php
 // Konfigurasi Database
-define('DB_HOST', 'sql113.byethost33.com');
-define('DB_USER', 'b33_40011306'); // User default XAMPP
-define('DB_PASS', 'mrslcn122009'); // Password default XAMPP kosong
-define('DB_NAME', 'b33_40011306_lostandfound_db');
+define('DB_HOST', 'localhost');
+define('DB_USER', 'root'); // User default XAMPP
+define('DB_PASS', ''); // Password default XAMPP kosong
+define('DB_NAME', 'umahsantap');   
 
 // Membuat Koneksi
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
