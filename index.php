@@ -148,9 +148,9 @@
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
-            <h1>Pesan Makanan Favoritmu Sekarang Juga!</h1>
+            <h1>Pesan Menu Andalan Kami Sekarang!</h1>
             <p class="lead">Cepat, Lezat, dan Higienis. Siap diantar ke depan pintumu.</p>
-            <a href="menu.php" class="btn btn-primary btn-lg">PESAN SEKARANG</a>
+            <a href="menu.php" class="btn btn-primary btn-lg">PESAN SIKI</a>
         </div>
     </section>
 
